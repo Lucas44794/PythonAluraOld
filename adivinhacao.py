@@ -4,26 +4,35 @@ print('*********************************')
 print('Bem vindo ao jogo de Adivinhação!')
 print('*********************************')
 
-numero_secreto = random.randint(1,100)
+numero_secreto = random.randint(1,20)
 
 
 
 chute = 1
 while (chute <= 10) :
     num = int(input('Digite o Seu Chute: '))
+    acertou = num == numero_secreto
+    maior = num > numero_secreto
+    menor = num < numero_secreto
+    tentativa = ('Tente Novamente')
 
-    if (num == numero_secreto):
+    if (acertou):
         print('Você Acertou!!!')
         chute = 11
 
-    elif (num > numero_secreto):
+    elif (maior):
         print("O Número digitado é maior que o número Secreto!")
-        print('Tente Novamente')
+        if (chute <= 9) :
+            print(tentativa)
         chute = chute + 1
 
-    elif (num < numero_secreto):
+    elif (menor):
         print('O número digitado é menor que o número secreto!')
-        print('Tente Novamente')
+        if (chute <= 9):
+            print(tentativa)
         chute = chute +1
-
-print('Jogo Finalizado!!!')
+if (chute == 11):
+    print('Jogo Finalizado!!!')
+else :
+    print('O Número Secreto era: {}'.format(numero_secreto))
+    print('Jogo Finalizado!!!')
